@@ -1,7 +1,7 @@
 package com.utm.tw.config;
 
 import com.utm.tw.entity.Chatter;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class Principal implements UserDetails {
 
     private final Chatter chatter;

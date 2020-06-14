@@ -18,21 +18,27 @@ public class ChatService {
     private final ChatRepository chatRepository;
     private final ChatterRepository chatterRepository;
 
-    public List<PostDTO> getChat() {
+    public List<PostDTO> getChat(String username) {
         List<Post> posts = chatRepository.findAll();
         List<PostDTO> toBeReturned = new ArrayList<>();
         for (Post post : posts) {
-            toBeReturned.add(new PostDTO(post));
+            PostDTO currentPost = new PostDTO(post);
+            if (post.getAuthor().getUsername().equals(username)) {
+                currentPost.setCurrent(true);
+            }
+            toBeReturned.add(currentPost);
         }
         return toBeReturned;
     }
 
     public void submit(AddPostDTO addPostDTO, String username) {
-        Post toBeSaved = new Post();
-        toBeSaved.setMessage(addPostDTO.getContent());
-        toBeSaved.setTitle(addPostDTO.getTitle());
-        toBeSaved.setAuthor(chatterRepository.findByUsername(username));
-        chatRepository.save(toBeSaved);
+        if (!addPostDTO.getContent().isEmpty() && !addPostDTO.getTitle().isEmpty()) {
+            Post toBeSaved = new Post();
+            toBeSaved.setMessage(addPostDTO.getContent());
+            toBeSaved.setTitle(addPostDTO.getTitle());
+            toBeSaved.setAuthor(chatterRepository.findByUsername(username));
+            chatRepository.save(toBeSaved);
+        }
     }
 
 }

@@ -10,9 +10,9 @@ import javax.validation.constraints.Email;
 import java.util.List;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 public class Chatter {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

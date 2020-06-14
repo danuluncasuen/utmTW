@@ -1,5 +1,15 @@
+let postsToDisplay = 5;
+
 $(document).ready(function() {
+    $.ajax({
+        type: "GET",
+        url: "/users/getCurrentUsername",
+        success: (response) => {
+        $("#current-username").html(response);
+        }
+    });
     getPosts();
+
 });
 
 function getPosts() {
@@ -18,10 +28,24 @@ function getPosts() {
 function drawChat(data) {
     let html = "";
     if(data) {
-        for(let i=0; i<data.length; i++) {
-            html += "<div class='alert alert-light' role='alert'>";
-            html += "<p><i>" + data[i].author + " says:</i> <strong>" + data[i].title + "</strong> " + data[i].content + "</p>";
-            html += "</div>";
+        if(postsToDisplay > data.length) {
+            postsToDisplay = data.length;
+        }
+        html += "<a id='load-more'>Load previous messages</a>";
+        for(let i=data.length-postsToDisplay; i<data.length; i++) {
+                if(data[i].isCurrent) {
+                    html += "<p class='username'><i>You</i></p>";
+                } else {
+                    html += "<p class='username'><i>" + data[i].author + "</i></p>";
+                }
+                if(data[i].isCurrent) {
+                    html += "<div class='alert alert-light message current' role='alert'>";
+                } else {
+                    html += "<div class='alert alert-light message' role='alert'>";
+                }
+                html += "<p class='title'>" + data[i].title + "</p> "
+                html += "<p>" + data[i].content + "</p>";
+                html += "</div></br>";
         }
     }
     $("#chat").html(html);
@@ -48,3 +72,8 @@ function prepareData() {
         content: $("#content").val()
     }
 }
+
+$("#chat").on("click", "#load-more", () => {
+    postsToDisplay += 5;
+    getPosts();
+})

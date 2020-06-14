@@ -3,20 +3,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Register</title>
+    <link rel="stylesheet" href="/css/register.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <label for="username">Username</label>
-        <input id="username" type="text">
-        <label for="email">Email</label>
-        <input id="email" type="email">
-        <label for="password">Password</label>
-        <input id="password" type="password">
-        <button id="register">register</button>
-        <script src="/js/registration.js"></script>
+        <div class="card">
+            <div class="card-body">
+                <h4>Registration</h4>
+                Please choose a meaningful username, a valid email and a strong password.
+            </div>
+        </div>
+        <form class="form-horizontal login-form" method="post" action="/">
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="email" class="form-control" id="email" name="email" placeholder="Email">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-10">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button id="register" class="btn btn-primary">Register</button>
+                    <a href="/">Sign in</a>
+                </div>
+            </div>
+        </form>
     </div>
 </body>
 </html>

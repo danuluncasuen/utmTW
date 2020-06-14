@@ -8,6 +8,7 @@ public class PostDTO {
     public String title;
     public String content;
     public String author;
+    public boolean isCurrent;
 
     public PostDTO(Post post) {
         this.title = post.getTitle();
