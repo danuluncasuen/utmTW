@@ -45,4 +45,9 @@ public class UserRest {
         }
         return username;
     }
+
+    @GetMapping("/admin")
+    public String adminEndpoint() {
+        return "<h1>This page can be viewed only by users with admin role</h1>";
+    }
 }
