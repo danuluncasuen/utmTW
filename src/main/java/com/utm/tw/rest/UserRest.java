@@ -28,7 +28,7 @@ public class UserRest {
     public ResponseEntity<Object> register(@RequestBody RegisterDTO registerDTO) {
         try {
             chatterService.register(registerDTO);
-            return new ResponseEntity<>("All good, you have been registred", HttpStatus.OK);
+            return new ResponseEntity<>("All good, you have been registered", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Bad request, you could not be registered", HttpStatus.BAD_REQUEST);
         }

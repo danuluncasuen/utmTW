@@ -1,4 +1,5 @@
 $("#register").on("click", function() {
+    console.log("Click works")
     $.ajax({
           type: "POST",
           url: "/users/register",
