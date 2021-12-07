@@ -20,8 +20,8 @@ public class ChatterService {
 
     public void register(RegisterDTO registerDTO) {
         registerDTO.setPassword(passwordEncoder.encode(registerDTO.getPassword()));
-        Chatter toBeRegistred = new Chatter(registerDTO);
-        chatterRepository.save(toBeRegistred);
+        Chatter toBeRegistered = new Chatter(registerDTO);
+        chatterRepository.save(toBeRegistered);
     }
 
     public List<ChatterFromDBDTO> getAllChatters() {
