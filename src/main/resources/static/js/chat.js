@@ -1,3 +1,5 @@
+'use strict';
+
 let postsToDisplay = 5;
 
 $(document).ready(function() {
@@ -57,11 +59,11 @@ $("#addbutton").on("click", function() {
             url: "/chat/submit",
             data: JSON.stringify(prepareData()),
             contentType: "application/json",
-            success: function(response){
-                location.reload();
+            success: function(){
+                getPosts();
             },
-            error: function(response) {
-                alert("could not load the chat");
+            error: function(){
+                getPosts()
             }
         });
 });
@@ -77,3 +79,7 @@ $("#chat").on("click", "#load-more", () => {
     postsToDisplay += 5;
     getPosts();
 })
+
+setInterval(() => {
+    getPosts();
+} , 5000)
